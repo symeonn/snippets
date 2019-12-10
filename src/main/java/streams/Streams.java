@@ -39,7 +39,16 @@ public class Streams {
 
     }
 
-    private class InnerObject {
+    public List<InnerObject> streamRetainAll(List<InnerObject> objList, List<InnerObject> retainList) {
+
+        return objList.stream()
+                .filter(retainList::contains)
+                .collect(Collectors.toList());
+//        objList.retainAll(retainList);
+//        return objList;
+    }
+
+    public static class InnerObject {
 
         public InnerObject(Integer value) {
             this.value = value;

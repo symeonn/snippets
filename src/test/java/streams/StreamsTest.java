@@ -8,9 +8,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class StreamsTest {
@@ -96,6 +94,33 @@ public class StreamsTest {
 
 
         assertNotNull(result);
+    }
+
+    @Test
+    public void testStreamRetainAll(){
+
+        Streams.InnerObject obj1 = new Streams.InnerObject(1);
+        Streams.InnerObject obj2 = new Streams.InnerObject(2);
+        Streams.InnerObject obj3 = new Streams.InnerObject(3);
+        Streams.InnerObject obj4 = new Streams.InnerObject(4);
+
+        List<Streams.InnerObject> objList = new ArrayList<>();
+        objList.add(obj1);
+        objList.add(obj2);
+        objList.add(obj3);
+        objList.add(obj4);
+
+        List<Streams.InnerObject> retainList = new ArrayList<>();
+        retainList.add(obj1);
+        retainList.add(obj2);
+
+        List<Streams.InnerObject> result = streams.streamRetainAll(objList, retainList);
+
+
+        assertNotNull(result);
+        assertEquals(2, result.size());
+
+
     }
 
 }
