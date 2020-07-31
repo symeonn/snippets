@@ -9,7 +9,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
 public class SasTokenGenerator {
-
+    public SasTokenGenerator() {
+    }
 
     public static String getHMAC256(String key, String input) {
         Mac sha256_HMAC = null;
